@@ -3,6 +3,7 @@ package cn.forever.demo.tccservice1.impl;
 import org.apache.commons.lang3.RandomUtils;
 import org.bytesoft.compensable.Compensable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.forever.demo.tccservice1.ITestInterface;
@@ -11,7 +12,7 @@ import cn.forever.demo.tccservice1.ITestInterface;
 public class TestImpl implements ITestInterface {
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void cancel() {
 		// TODO Auto-generated method stub
 		
