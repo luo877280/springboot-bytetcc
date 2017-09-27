@@ -11,7 +11,6 @@ import cn.forever.demo.tccservice1.ITestInterface;
 @Service
 public class TestImpl implements ITestInterface {
 
-	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void cancel() {
 		// TODO Auto-generated method stub

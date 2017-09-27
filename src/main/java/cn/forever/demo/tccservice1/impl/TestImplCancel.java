@@ -8,7 +8,6 @@ import cn.forever.demo.tccservice1.ITestInterface;
 @Service("testImplCancel")
 public class TestImplCancel implements ITestInterface {
 
-	@Override
 	@Transactional
 	public void cancel() {
 		// TODO Auto-generated method stub
