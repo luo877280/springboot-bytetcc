@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.forever.demo.remote.feign.service.IAccountService;
 import cn.forever.demo.service.ITccAllservice;
+import cn.forever.demo.tccDBService1.DBService1;
+import cn.forever.demo.tccDBService2.DBService2;
 import cn.forever.demo.tccservice.impl.TransferService;
 import cn.forever.demo.tccservice1.impl.TestImpl;
 
@@ -23,15 +25,18 @@ public class TccAllservice implements ITccAllservice{
 	@Autowired
 	private IAccountService acctService;
 	
-	
+	@Autowired
+	DBService1 dbService1Impl;
+	@Autowired
+	DBService2 dbService2Impl;
 	@Transactional
 	public void testAll(){
 		System.out.println("..............TccAllservice............");
 		transferService.test();
-		acctService.increaseAmount("123", 1.2d);
+//		acctService.increaseAmount("123", 1.2d);//远程服务
+		dbService1Impl.save();
+		dbService2Impl.save2();
 		testImpl.cancel();
-		
-		
 //		try{
 //			transferService.test();
 //			testImpl.cancel();
@@ -45,7 +50,7 @@ public class TccAllservice implements ITccAllservice{
 //		if (i > 150) {
 //			throw new NullPointerException();
 //		}
-		System.out.println(".............TccAllservice end.............");
+		System.out.println("..........TccAllservice end.............");
 
 	}
 	
